@@ -15,7 +15,7 @@ var shortestToChar = function (s, c) {
     }
 
     let n1 = num[0]
-    let n2 = num[1] ? num[1] : [999]
+    let n2 = num[1]
     let id = 1
     for (let i = 0; i < s.length; i++) {
 
@@ -30,7 +30,10 @@ var shortestToChar = function (s, c) {
 
             id++;
             n1 = n2;
-            n2 = num[id] ? num[id] : [999]
+
+
+
+            n2 = num[id]
         }
 
     }
@@ -49,9 +52,42 @@ shortestToChar(s, c)
 
 
 // Symbol 实现
-
+// Object.defineProperties() 方法直接在一个对象上定义新的属性或修改现有属性，并返回该对象。
 function SymbolPolyfill(s) {
 
+    var obj = {
+        b: 111
+    };
+
+    Object.defineProperties(obj, {
+        'p1': {
+            value: 'a',
+            writable: true,
+            enumerable: false,
+            configurable: true
+        },
+        'a2': {
+            value: 'Hello',
+            writable: false
+        }
+        // etc. etc.
+    });
+
+    return obj
 
 
 }
+
+let a = SymbolPolyfill();
+
+console.log(a);
+
+for (const key in a) {
+    console.log(key);
+}
+
+var ss = function () {}
+var _proto = ss.prototype;
+var s1 = Object.create(_proto)
+var s2 = Object.create(_proto)
+// console.log(s1 == s2);
