@@ -68,10 +68,10 @@ CustomStack.prototype.increment = function (k, val) {
 // const promise3 = Promise.reject(4)
 // const promiseL = [promise1, promise2, promise3];
 
-Promise.allSettled('1', '2')
-    .then((results) => {
-        results.forEach((result) => console.log(result))
-    });
+// Promise.allSettled("1", "2")
+//     .then((results) => {
+//         results.forEach((result) => console.log(result))
+//     });
 
 // expected output:
 // "fulfilled"
@@ -81,12 +81,20 @@ Promise.allSettled('1', '2')
 
 function allSettled(promises) {
 
-    let len = promises.length;
+    console.log(promises);
+    if (!promises || promises == undefined) {
+        return Promise.resolve(' undefined')
+    }
+
+    if (promises && promises.length == 0) {
+        return Promise.resolve([])
+    }
+    let len = promises.length - 1;
     let promisesList = [...promises]
     let list = [];
     return new Promise((resolve, reject) => {
 
-        for (let i = 0; i < len; i++) {
+        for (let i = 0; i <= len; i++) {
 
             promisesList[i] = promisesList[i].then ? promisesList[i] : Promise.resolve(promisesList[i])
 
@@ -96,15 +104,25 @@ function allSettled(promises) {
                     value: res
                 }
 
+                if (i === len) {
+                    resolve(list)
+                }
+
+
             }, err => {
                 list[i] = {
                     status: 'rejected',
                     reason: err
                 }
+
+                if (i === len) {
+                    resolve(list)
+                }
             })
 
+
+
         }
-        resolve(list)
 
     })
 
@@ -112,7 +130,8 @@ function allSettled(promises) {
 
 
 
-const p = allSettled([1, 2])
+const p = allSettled([])
 p.then(res => {
-    res.forEach((result) => console.log('3333', result))
+    console.log(res);
+    // res.forEach((result) => console.log('3333', result))
 })
