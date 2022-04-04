@@ -28,3 +28,36 @@ yd-interface【驱动状态】
 mirror 私仓 dai
 
 // 推特 香港手机号 短信注册微信
+
+## 状态机
+
+1. redux => reducer
+2. mobx
+3. recoil atom (原子状态)
+4. jotai 更加简单 依赖 hooks
+5. zustand 脱离 kooks
+6. xstate
+
+## 网站
+
+risingstars.js.org // js 框架排行
+osawards.com // 操作系统奖
+https://2021.stateofcss.com/en-US/
+
+## 英语辅助
+
+科大讯飞翻译笔
+
+workspace 管理工作空间
+
+## pnpm
+
+yarn 去 nodeModule 放到电脑硬盘中- PnP 模式
+
+1. pnpm 内容寻址 hardlink； 硬链和软链的区别？硬链生成一个文件和源文件一致，软链和源文件没有关联相当于复制了一份新的
+2. pnpm 支持仓库 monorepo
+3. 安全 A->b<-c 依赖关系 非法访问依赖
+
+leara publish 和 pnpm publish 一样
+
+linux 硬链接和软连接
